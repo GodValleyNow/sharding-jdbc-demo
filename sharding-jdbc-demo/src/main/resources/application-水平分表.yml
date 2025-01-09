@@ -1,0 +1,33 @@
+spring:
+    main:
+        # 允许bean定义覆盖
+        allow-bean-definition-overriding: true
+    shardingsphere:
+        datasource:
+            names: m1
+            m1:
+                type: com.alibaba.druid.pool.DruidDataSource
+                driver-class-name: com.mysql.cj.jdbc.Driver
+                url: jdbc:mysql://${custom.mysql.server-ip}:3306/course_db?serverTimezone=GMT%2B8
+                username: ${custom.mysql.username}
+                password: ${custom.mysql.password}
+        # 显示sql
+        props:
+            sql:
+                show: true
+        sharding:
+            tables:
+                # 指定具体一个表的分片规则
+                course:
+                    # 分片表名规则
+                    actual-data-nodes: m1.course_$->{1..2}
+                    # 指定主键的生成策略
+                    key-generator:
+                        column: cid
+                        type: SNOWFLAKE
+                    # 指定分表策略
+                    table-strategy:
+                        # 行表达式分片
+                        inline:
+                            algorithm-expression: course_$->{cid % 2 + 1}
+                            sharding-column: cid

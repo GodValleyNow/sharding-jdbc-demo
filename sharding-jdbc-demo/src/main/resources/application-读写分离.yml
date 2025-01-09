@@ -1,0 +1,36 @@
+spring:
+    main:
+        allow-bean-definition-overriding: true
+    shardingsphere:
+        datasource:
+            names: m0,s0
+            m0:
+                driver-class-name: com.mysql.cj.jdbc.Driver
+                password: ${custom.mysql.password}
+                type: com.alibaba.druid.pool.DruidDataSource
+                url: jdbc:mysql://${custom.mysql.server-ip}:3307/user_db?serverTimezone=GMT%2B8
+                username: ${custom.mysql.username}
+            s0:
+                driver-class-name: com.mysql.cj.jdbc.Driver
+                password: ${custom.mysql.password}
+                type: com.alibaba.druid.pool.DruidDataSource
+                url: jdbc:mysql://${custom.mysql.server-ip}:3308/user_db?serverTimezone=GMT%2B8
+                username: ${custom.mysql.username}
+        props:
+            sql:
+                show: true
+        sharding:
+            master-slave-rules:
+                ds0:
+                    master-data-source-name: m0
+                    slave-data-source-names: s0
+            tables:
+                t_user:
+                    actual-data-nodes: ds0.t_user
+                    key-generator:
+                        column: user_id
+                        type: SNOWFLAKE
+                    table-strategy:
+                        inline:
+                            algorithm-expression: t_user
+                            sharding-column: user_id
