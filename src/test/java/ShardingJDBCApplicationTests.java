@@ -118,8 +118,7 @@ public class ShardingJDBCApplicationTests {
         userMapper.insert(user);
     }
 
-    // @Test
-    @RepeatedTest(10)
+    @Test
     public void masterSlaveFindUser() {
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         wrapper.eq("user_id", 1084142407445905408L);

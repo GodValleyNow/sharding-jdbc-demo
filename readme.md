@@ -7,6 +7,12 @@
 - 为了测试方便，使用docker搭建mysql挂载卷方式，参考：[Docker搭建Mysql主从复制](https://www.chenhuazhan.com/ui/details/159)
 - 表结构啥的请参考本文下面那个文档
 
+# 版本说明
+- shardingsphere 4.0.0-RC1
+- springboot 2.2.11.RELEASE
+- jdk 1.8
+- mysql 8.0
+
 # 使用说明
 - spring.profiles.active来激活不同的配置
 - 为了测试方便，主从配置的是一台虚拟机

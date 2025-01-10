@@ -14,10 +14,10 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-boot.version>2.2.11.RELEASE</spring-boot.version>
         <lombok.version>1.18.34</lombok.version>
-        <shardingsphere.version>5.0.0</shardingsphere.version>
-        <mysql.version>8.0.30</mysql.version>
-        <mybatis-plus.version>3.5.9</mybatis-plus.version>
+        <shardingsphere.version>4.0.0-RC1</shardingsphere.version>
+        <mybatis-plus.version>3.5.3.1</mybatis-plus.version>
         <druid.version>1.1.20</druid.version>
+        <fastjson.version>2.0.52</fastjson.version>
     </properties>
 
     <parent>
@@ -40,7 +40,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
-            <version>1.1.20</version>
+            <version>${druid.version}</version>
         </dependency>
 
         <dependency>
@@ -51,13 +51,13 @@
         <dependency>
             <groupId>org.apache.shardingsphere</groupId>
             <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
-            <version>4.0.0-RC1</version>
+            <version>${shardingsphere.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.5.3.1</version>
+            <version>${mybatis-plus.version}</version>
         </dependency>
 
         <dependency>
@@ -67,7 +67,7 @@
         <dependency>
             <groupId>com.alibaba.fastjson2</groupId>
             <artifactId>fastjson2</artifactId>
-            <version>2.0.52</version>
+            <version>${fastjson.version}</version>
         </dependency>
     </dependencies>
 
